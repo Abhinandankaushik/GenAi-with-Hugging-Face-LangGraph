@@ -17,7 +17,12 @@ syntax :
 
 daily_sales = [2,3,45,6,7,4,5,7,9,9,56,4,2,3,5,2,34,234]
 
-total_sale = sum( sale for sale in daily_sales if sale > 5)  #generator comprehension
+# total_sale = sum( sale for sale in daily_sales if sale > 5)  #generator comprehension
+# print(total_sale)
 
-print(total_sale)
+total_sale = ( sale for sale in daily_sales if sale > 5)  #generator comprehension
+
+print(next(total_sale))
+print(next(total_sale))
+print(next(total_sale))
 
