@@ -23,6 +23,7 @@ def handle():
     try:
         while True:
             detail = yield "abhi:3001"
+            print(detail)
     except :
         print("No details available")
 
@@ -30,5 +31,6 @@ d = handle()
 
 for i in range(5):
     print(next(d))
+   
     d.close()
     break

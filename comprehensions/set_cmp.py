@@ -52,6 +52,6 @@ output :
  
 """
 
-unique_std = { print(item) for item in student.values() for each in item }  
+unique_std = { print(each) for item in student.values() for each in item }  
 
 print(unique_std)
