@@ -4,10 +4,12 @@ import uvicorn
 from ollama import Client
 
 
+
 app = FastAPI()
 client = Client(
     host="http://localhost:11434"
 )
+
 
 
 @app.get("/")
