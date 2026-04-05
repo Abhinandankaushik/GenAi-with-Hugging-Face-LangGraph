@@ -6,8 +6,10 @@ import json
 from pydantic import BaseModel,Field
 from typing import Optional
 
+
 load_dotenv()
 
+# for external api
 client = OpenAI(
     api_key= os.environ["GEMINI_API_KEY"],
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
@@ -15,10 +17,15 @@ client = OpenAI(
 
 
 
+
 # external api for whether fetch
 # https://wttr.in/{city}?format=%c+%t
 
 
+def run_cmd(cmd:str):
+    result = os.system(cmd)
+    return result
+ 
 def get_weather(city:str):
     url = f"https://wttr.in/{city}?format=%c+%t"
     response = requests.get(url)
@@ -30,7 +37,8 @@ def get_weather(city:str):
 
 
 available_tools = {
-    "get_weather" : get_weather
+    "get_weather" : get_weather,
+    "run_command" : run_cmd
 }
 
 SYSTEM_PROMPT = """
@@ -60,7 +68,7 @@ Output JSON Format:
 
 Available Tools : 
 - get_weather: Takes city name as a input and  return weather info about the city 
-
+- run_command(cmd:str): Takes a system linus command as string and executes the command on user's systems and returns the output from that command 
 Example Interaction:
     Example-1:
         User Input:
@@ -148,7 +156,7 @@ class MyOutputFormat(BaseModel):
     step:str = Field(...,description="The ID of the step. Example: PLAN,OUTPUT,TOOL, etc")
     content: Optional[str] = Field(None,description="The optional string content")
     tool : Optional[str] = Field(None,description="The ID of tool call.")
-    tool_input : Optional[str] = Field(None,description="The input params for the tool.")
+    input : Optional[str] = Field(None,description="The input params for the tool.")
 
 message_history = [
    {"role":"system",  "content": SYSTEM_PROMPT},
@@ -161,7 +169,7 @@ message_history.append({"role":"user","content":user_query})
 
 while True:
   response = client.chat.completions.parse(
-      model="gemini-3-flash-preview",
+      model="gemma:2b",
       response_format=MyOutputFormat,
       messages=message_history
   )
