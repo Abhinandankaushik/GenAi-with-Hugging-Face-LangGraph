@@ -3,6 +3,8 @@ from openai import OpenAI
 import os
 import requests
 import json
+from pydantic import BaseModel,Field
+from typing import Optional
 
 load_dotenv()
 
@@ -142,7 +144,11 @@ Example Interaction:
 
 
 
-
+class MyOutputFormat(BaseModel):
+    step:str = Field(...,description="The ID of the step. Example: PLAN,OUTPUT,TOOL, etc")
+    content: Optional[str] = Field(None,description="The optional string content")
+    tool : Optional[str] = Field(None,description="The ID of tool call.")
+    tool_input : Optional[str] = Field(None,description="The input params for the tool.")
 
 message_history = [
    {"role":"system",  "content": SYSTEM_PROMPT},
@@ -154,37 +160,38 @@ user_query = input("👉👉")
 message_history.append({"role":"user","content":user_query})
 
 while True:
-  response = client.chat.completions.create(
+  response = client.chat.completions.parse(
       model="gemini-3-flash-preview",
-      response_format={"type":"json_object"},
+      response_format=MyOutputFormat,
       messages=message_history
   )
   raw_result = response.choices[0].message.content
   message_history.append({"role":"user","content":raw_result})
-  parsed_result = json.loads(raw_result)
+  parsed_result = response.choices[0].message.parsed
   
   if isinstance(parsed_result, list):
      parsed_result = parsed_result[0]
   
-  if parsed_result.get("step") == "START":
-    print("✅",parsed_result.get("content"))
+  if parsed_result.step == "START":
+    print("✅",parsed_result.content)
     continue
-  if parsed_result.get("step") == "PLAN":
-    print("❤️",parsed_result.get("content"))
+  if parsed_result.step == "PLAN":
+    print("❤️",parsed_result.content)
     continue
 
-  if parsed_result.get("step") == "TOOL":
-    tool_to_call = parsed_result.get("tool") 
-    tool_input = parsed_result.get("input") 
+  if parsed_result.step == "TOOL":
+    tool_to_call = parsed_result.tool
+    tool_input = parsed_result.input
+    tool_response = available_tools[tool_to_call](tool_input)
+    
     print(f"🚀, {tool_to_call} ({tool_input}) = {tool_response}")
     
-    tool_response = available_tools[tool_to_call](tool_input)
     message_history.append({"role":"developer","content":json.dumps(
         {"step":"OBSERVE","tool":tool_to_call, "input":tool_input , "output": tool_response})})
     continue
 
-  if parsed_result.get("step") == "OUTPUT":
-    print("😍",parsed_result.get("content"))
+  if parsed_result.step == "OUTPUT":
+    print("😍",parsed_result.content)
     break
   
 
