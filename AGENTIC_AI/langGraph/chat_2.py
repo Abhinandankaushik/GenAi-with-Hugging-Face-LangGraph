@@ -41,9 +41,9 @@ def quality(state: MessagesState):
         model="gemini-3-flash-preview",
         messages=[
             {"role" : "system", "content": """if give user query which is come from another 
-             LLM call is very descriptive and understandable for begginer like 1st class students'
-             then give response from this two litrals : 
-             litrals = ["GOOD", "Excelent"]
+             LLM call is very descriptive and understandable for beginner like 1st class students'
+             then give response from this two literals : 
+             literals = ["GOOD", "Excelent"]
              else give "BAD" as response nothing extra 
              """},
             {"role":"user", "content": state.get("user_query")}
@@ -64,7 +64,7 @@ def chat_bot2(state: MessagesState):
     response = client.chat.completions.create(
         model="gemini-3-flash-preview",
         messages=[
-            {"role":"system", "content" : "Magnifie this query ansser in very descriptive form for begginers"},
+            {"role":"system", "content" : "Magnify this query answer in very descriptive form for beginners"},
             {"role":"user", "content": state.get("user_query")}
         ]
     )
