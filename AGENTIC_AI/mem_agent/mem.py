@@ -7,7 +7,8 @@ import json
 load_dotenv()
 
 GOOGLE_API_KEY = os.environ["GEMINI_API_KEY"]
-
+AI_MODEL = os.environ["GOOGLE_GEMINI_MODEL"]
+EM_MODEL = os.environ["GOOGLE_GEMINI_ENB_MODEL"]
 client = genai.Client(api_key=GOOGLE_API_KEY)
 
 
@@ -17,14 +18,22 @@ config = {
         "provider": "gemini",
         "config": {
             "api_key": GOOGLE_API_KEY,
-            "model": "gemini-embedding-2-preview"
+            "model": EM_MODEL
         }
     },
     "llm": {
         "provider": "gemini",
         "config": {
             "api_key": GOOGLE_API_KEY,
-            "model": "gemini-3-flash-preview"
+            "model": AI_MODEL
+        }
+    },
+    "graph_store" : {
+        "provider" : "neo4j",
+        "config" : {
+            "url" : os.environ["NEO_CONNECTION_URI"],
+            "username":os.environ["NEO4J_USER_NAME"],
+            "password":os.environ["NEO4J_PASSWORD"]
         }
     },
     "vector_store": {
@@ -57,17 +66,15 @@ while user_query:=input("query >") :
     
     SYSTEM_PROMPT = f"""
 You are a helpful AI assistant aware of user's background.
-
 User's memories:
 {json.dumps(memories)}
-
 Please respond considering this context."""
     
     # Combine system prompt with user query
     full_prompt = f"{SYSTEM_PROMPT}\n\nUser Query: {user_query}"
     
     ai_response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model=AI_MODEL,
         contents=full_prompt
     )
 
