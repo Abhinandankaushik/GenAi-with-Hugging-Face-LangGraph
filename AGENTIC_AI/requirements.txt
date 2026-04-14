@@ -11,6 +11,8 @@ anyio==4.12.1
 archspec @ file:///home/task_175812491784513/conda-bld/archspec_1758124989039/work
 asttokens==3.0.1
 attrs==26.1.0
+backoff==2.2.1
+beautifulsoup4==4.14.3
 billiard==4.2.4
 blinker==1.9.0
 boltons @ file:///C:/b/abs_e2_iokhxbp/croot/boltons_1751383740243/work
@@ -51,6 +53,8 @@ Flask==3.0.0
 frozendict @ file:///C:/miniconda3/conda-bld/frozendict_1761750728192/work
 frozenlist==1.8.0
 fsspec==2025.12.0
+google==3.0.0
+google-ai-generativelanguage==0.6.15
 google-api-core==2.29.0
 google-api-python-client==2.190.0
 google-auth==2.48.0
@@ -59,10 +63,12 @@ google-cloud-core==2.5.0
 google-cloud-storage==3.9.0
 google-crc32c==1.8.0
 google-genai==1.67.0
+google-generativeai==0.8.6
 google-resumable-media==2.8.0
 googleapis-common-protos==1.72.0
 greenlet==3.3.2
 grpcio==1.80.0
+grpcio-status==1.71.2
 h11==0.16.0
 h2==4.3.0
 hf-xet==1.4.3
@@ -113,6 +119,7 @@ MarkupSafe==2.1.5
 marshmallow==3.26.2
 matplotlib-inline==0.2.1
 mdurl @ file:///C:/miniconda3/conda-bld/mdurl_1758552277768/work
+mem0ai==1.0.11
 menuinst @ file:///C:/miniconda3/conda-bld/menuinst_1765382397455/work
 more-itertools @ file:///C:/miniconda3/conda-bld/more-itertools_1761121564395/work
 mpmath==1.3.0
@@ -133,10 +140,11 @@ pkce @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pkce_172904
 platformdirs @ file:///C:/miniconda3/conda-bld/platformdirs_1762356623609/work
 pluggy @ file:///C:/b/abs_dfec_m79vo/croot/pluggy_1733170145382/work
 portalocker==3.2.0
+posthog==7.11.1
 prompt_toolkit==3.0.52
 propcache==0.4.1
 proto-plus==1.27.1
-protobuf==6.33.5
+protobuf==5.29.6
 pure_eval==0.2.3
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
@@ -156,6 +164,7 @@ PySocks @ file:///C:/miniconda3/conda-bld/pysocks_1761753030965/work
 python-dateutil==2.9.0.post0
 python-dotenv @ file:///C:/b/abs_71cpoh9hpg/croot/python-dotenv_1745613639902/work
 python-multipart==0.0.22
+pytz==2026.1.post1
 pywin32==311
 pywin32-ctypes @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pywin32-ctypes_1729046491215/work
 PyYAML==6.0.3
@@ -181,6 +190,7 @@ setuptools==80.9.0
 shellingham @ file:///C:/miniconda3/conda-bld/shellingham_1761912227081/work
 six==1.17.0
 sniffio==1.3.1
+soupsieve==2.8.3
 SQLAlchemy==2.0.49
 stack-data==0.6.3
 starlette==0.52.1

@@ -44,7 +44,7 @@ graph = compile_graph_with_checkpointer()
 # ✅ Config (thread_id = memory key)
 config = {
     "configurable": {
-        "thread_id": "abhi"
+        "thread_id": "abhi" # user_id
     }
 }
 
@@ -53,7 +53,7 @@ config = {
 # ==============================
 graph.invoke(
     MessagesState({
-        "messages": [HumanMessage(content="hey, my name is abhi")]
+        "messages": [HumanMessage(content="what is my name ?")]
     }),
     config
 )
@@ -77,5 +77,7 @@ while user_query:=input("\nEnter your query: "):
         stream_mode="values"
     ):
         chunk["messages"][-1].pretty_print()
+        print("Graph ID : ",id(graph))
 
-print("\n*"*10,"Session Ended","*"*10) 
+print("\n","*"*10,"Session Ended","*"*10) 
+# 1835230693424
