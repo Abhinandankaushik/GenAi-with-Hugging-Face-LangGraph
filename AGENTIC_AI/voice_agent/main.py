@@ -20,14 +20,14 @@ def speech_to_text():
         print("Speak Something...")
         audio = r.listen(source)
         # print(sr.Microphone.list_microphone_names())  # list microphone 
-        print("Processing Audion.. (STT)")
+        print("Processing Audio.. (STT)")
         stt = r.recognize_google(audio)
          
         print("You said...\n",stt)  
         
         full_prompt = f""" 
         You are an expert voice agent. You are given the transcript of what user has said  using voice.
-        You nee to output as if you are an voice agent and whatever you speek 
+        You need to output as if you are a voice agent and whatever you speak 
         will be converted back to audio using AI and played back to user
         
         "user_said": {stt}
