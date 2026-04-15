@@ -11,6 +11,7 @@ anyio==4.12.1
 archspec @ file:///home/task_175812491784513/conda-bld/archspec_1758124989039/work
 asttokens==3.0.1
 attrs==26.1.0
+audioop-lts==0.2.2
 backoff==2.2.1
 beautifulsoup4==4.14.3
 billiard==4.2.4
@@ -21,11 +22,12 @@ celery==5.3.4
 certifi @ file:///C:/miniconda3/conda-bld/certifi_1763135348719/work/certifi
 cffi @ file:///C:/miniconda3/conda-bld/cffi_1761832792955/work
 charset-normalizer @ file:///C:/miniconda3/conda-bld/charset-normalizer_1761744975868/work
-click @ file:///C:/miniconda3/conda-bld/click_1764332372183/work
+click==8.1.8
 click-didyoumean==0.3.1
 click-plugins==1.1.1.2
 click-repl==0.3.0
 colorama @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/colorama_1729036581634/work
+comtypes==1.4.16
 conda @ file:///C:/miniconda3/conda-bld/conda_1765567840841/work/conda-src
 conda-anaconda-telemetry @ file:///croot/conda-anaconda-telemetry_1755883788794/work
 conda-anaconda-tos @ file:///C:/b/abs_c9yejtsx9g/croot/conda-anaconda-tos_1755123332641/work
@@ -69,6 +71,7 @@ googleapis-common-protos==1.72.0
 greenlet==3.3.2
 grpcio==1.80.0
 grpcio-status==1.71.2
+gTTS==2.5.4
 h11==0.16.0
 h2==4.3.0
 hf-xet==1.4.3
@@ -152,6 +155,7 @@ protobuf==5.29.6
 pure_eval==0.2.3
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
+PyAudio==0.2.14
 pycosat @ file:///C:/b/abs_18nblzzn70/croot/pycosat_1736868434419/work
 pycparser @ file:///C:/miniconda3/conda-bld/pycparser_1757496153123/work
 pydantic @ file:///C:/miniconda3/conda-bld/pydantic_1764083582233/work
@@ -164,10 +168,12 @@ pymongo==4.15.5
 pymongo-search-utils==0.3.0
 pyparsing==3.3.2
 pypdf==6.9.2
+pypiwin32==223
 PySocks @ file:///C:/miniconda3/conda-bld/pysocks_1761753030965/work
 python-dateutil==2.9.0.post0
 python-dotenv @ file:///C:/b/abs_71cpoh9hpg/croot/python-dotenv_1745613639902/work
 python-multipart==0.0.22
+pyttsx3==2.99
 pytz==2026.1.post1
 pywin32==311
 pywin32-ctypes @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pywin32-ctypes_1729046491215/work
@@ -196,8 +202,11 @@ shellingham @ file:///C:/miniconda3/conda-bld/shellingham_1761912227081/work
 six==1.17.0
 sniffio==1.3.1
 soupsieve==2.8.3
+SpeechRecognition==3.16.0
 SQLAlchemy==2.0.49
 stack-data==0.6.3
+standard-aifc==3.13.0
+standard-chunk==3.13.0
 starlette==0.52.1
 sympy==1.14.0
 tenacity==9.1.4
